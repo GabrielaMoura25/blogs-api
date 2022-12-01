@@ -9,6 +9,11 @@ const usersService = {
     const { password: _, ...userWhithoutPass } = body;
     return jwt.createToken(userWhithoutPass);
   },
+
+  findAll: async () => {
+    const users = await User.findAll({ attributes: { exclude: ['password'] } });
+    return users;
+  },
 };
 
 module.exports = usersService;
