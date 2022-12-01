@@ -1,14 +1,13 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('../middlewares/jwt');
 const { User } = require('../models');
 
-const { JWT_SECRET } = process.env;
-
 const loginService = {
-    login: async (email) => {
+    login: async (email, _password) => {
         const user = await User.findOne({ where: { email } });
         if (!user) return null;
 
-        return jwt.sign({ data: email }, JWT_SECRET); 
+        const { password: _, ...userWhithoutPass } = user.dataValues;
+        return jwt.createToken(userWhithoutPass); 
     },
 };
 
