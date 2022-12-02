@@ -10,15 +10,13 @@ const usersService = {
     return jwt.createToken(userWhithoutPass);
   },
 
-  findAllUsers: async () => {
+  findAll: async () => {
     const users = await User.findAll({ attributes: { exclude: ['password'] } });
     return users;
   },
 
-  findById: async (id) => {
-    const user = await User.findOne({ 
-      where: { id },
-      attributes: { exclude: ['password'] } });
+  findByPk: async (id) => {
+    const user = await User.findByPk(id, { attributes: { exclude: ['password'] } });
     if (!user) return { error: { code: 404, message: { message: 'User does not exist' } } };
     return user;
   },

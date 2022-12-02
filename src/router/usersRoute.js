@@ -3,8 +3,8 @@ const usersController = require('../controllers/usersController');
 
 const route = Router();
 
-route.get('/:id', usersController.findById);
-route.get('/', usersController.findAllUsers);
+route.get('/:id', usersController.findByPk);
+route.get('/', usersController.findAll);
 route.post('/', usersController.create);
 
 module.exports = route;

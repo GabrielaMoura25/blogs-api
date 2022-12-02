@@ -17,20 +17,20 @@ const usersController = {
     }
   },
 
-  findAllUsers: async (req, res) => {
+  findAll: async (req, res) => {
     const token = req.headers.authorization;
     const validate = jwt.verifyToken(token);
     if (validate.error) return res.status(validate.error.code).json(validate.error.message);
-    const result = await usersService.findAllUsers();
+    const result = await usersService.findAll();
     return res.status(200).json(result);
   },
 
-  findById: async (req, res) => {
+  findByPk: async (req, res) => {
     const token = req.headers.authorization;
     const validate = jwt.verifyToken(token);
     if (validate.error) return res.status(validate.error.code).json(validate.error.message);
     const { id } = req.params;
-    const result = await usersService.findById(id);
+    const result = await usersService.findByPk(id);
     if (result.error) return res.status(result.error.code).json(result.error.message);
     return res.status(200).json(result);
   },
