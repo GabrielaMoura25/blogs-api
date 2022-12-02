@@ -7,7 +7,7 @@ const categoriesService = {
     return dataValues;
   },
   
-  findAllCategories: async () => {
+  findAll: async () => {
     const categories = await Category.findAll({ attributes: { exclude: ['password'] } });
     return categories;
   },

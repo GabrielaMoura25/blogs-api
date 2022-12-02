@@ -21,11 +21,11 @@ const categoriesController = {
     return res.status(201).json(result);
   },
 
-  findAllCategories: async (req, res) => {
+  findAll: async (req, res) => {
     const token = req.headers.authorization;
     const validate = jwt.verifyToken(token);
     if (validate.error) return res.status(validate.error.code).json(validate.error.message);
-    const result = await categoriesService.findAllCategories();
+    const result = await categoriesService.findAll();
     return res.status(200).json(result);
   },
 };
