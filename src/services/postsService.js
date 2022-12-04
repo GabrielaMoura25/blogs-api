@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { User, Category, BlogPost, PostCategory } = require('../models');
 
 const postsService = {
@@ -69,6 +70,20 @@ const postsService = {
     }
     const deletePost = await BlogPost.destroy({ where: { id } });
     return deletePost;
+  },
+
+  findAllSearch: async (search) => {
+    const posts = await BlogPost.findAll({
+      where: { [Op.or]: [
+        { title: { [Op.substring]: search } },
+        { content: { [Op.substring]: search } },
+      ] },
+      include: [
+        { model: User, as: 'user', attributes: { exclude: ['password'] } },
+        { model: Category, as: 'categories' },
+      ],
+    });
+    return posts;
   },
 };
 

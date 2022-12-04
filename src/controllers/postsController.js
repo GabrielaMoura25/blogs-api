@@ -77,6 +77,16 @@ const postsController = {
     }
     return res.status(204).end();
   },
+
+  findAllSearch: async (req, res) => {
+    const token = req.headers.authorization;
+    const validate = jwt.verifyToken(token);
+    if (validate.error) return res.status(validate.error.code).json(validate.error.message);
+
+    const { q } = req.query;
+    const posts = await postsService.findAllSearch(q);
+    return res.status(200).json(posts);
+  },
 };
 
 module.exports = postsController;

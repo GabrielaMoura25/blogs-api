@@ -3,6 +3,7 @@ const postsController = require('../controllers/postsController');
 
 const route = Router();
 
+route.get('/search', postsController.findAllSearch);
 route.get('/:id', postsController.findByPk);
 route.get('/', postsController.findAll);
 route.post('/', postsController.create);
