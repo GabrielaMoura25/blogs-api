@@ -55,6 +55,21 @@ const postsService = {
     const updatePost = await postsService.findByPk(id);
     return updatePost;
   },
+
+  destroy: async (id, email) => {
+    const user = await User.findOne({ where: { email } });
+    const post = await postsService.findByPk(id);
+
+    if (post.error) return { error: { code: 404, message: { message: 'Post does not exist' } } };
+    const t1 = user.toJSON().id;
+    const t2 = post.toJSON().userId;
+
+    if (t1 !== t2) {
+      return { error: { code: 401, message: { message: 'Unauthorized user' } } };
+    }
+    const deletePost = await BlogPost.destroy({ where: { id } });
+    return deletePost;
+  },
 };
 
 module.exports = postsService;

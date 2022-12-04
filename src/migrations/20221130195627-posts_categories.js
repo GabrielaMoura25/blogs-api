@@ -11,6 +11,7 @@ module.exports = {
           key: 'id',
         },
         primaryKey: true,
+        onDelete: 'cascade',
       },
       category_id: {
         type: Sequelize.INTEGER,
@@ -20,7 +21,10 @@ module.exports = {
           key: 'id',
         },
         primaryKey: true,
+        onDelete: 'cascade',
       },
+    }, {
+      timestamps: false,
     });
   },
 
