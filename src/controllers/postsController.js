@@ -1,6 +1,7 @@
 const postsService = require('../services/postsService');
 const validatePost = require('../middlewares/validatePost');
 const jwt = require('../middlewares/jwt');
+const validateUpdatePost = require('../middlewares/validateUpdatePost');
 
 const postsController = {
   create: async (req, res) => {
@@ -42,6 +43,24 @@ const postsController = {
 
     if (post.error) return res.status(post.error.code).json(post.error.message);
     return res.status(200).json(post);
+  },
+
+  update: async (req, res) => {
+    const token = req.headers.authorization;
+    const validate = jwt.verifyToken(token);
+    if (validate.error) return res.status(validate.error.code).json(validate.error.message);
+
+    const validateBody = validateUpdatePost(req.body);
+    if (validateBody.error) {
+      return res.status(validateBody.error.code).json(validateBody.error.message);
+    }
+
+    const { id } = req.params;
+    const { email } = validate;
+    const updatePost = await postsService.update(validateBody, id, email);
+
+    if (updatePost.error) return res.status(updatePost.error.code).json(updatePost.error.message);
+    return res.status(200).json(updatePost);
   },
 };
 
