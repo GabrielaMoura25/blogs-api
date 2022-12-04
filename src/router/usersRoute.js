@@ -6,5 +6,6 @@ const route = Router();
 route.get('/:id', usersController.findByPk);
 route.get('/', usersController.findAll);
 route.post('/', usersController.create);
+route.delete('/me', usersController.delete);
 
 module.exports = route;

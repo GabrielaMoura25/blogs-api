@@ -20,6 +20,13 @@ const usersService = {
     if (!user) return { error: { code: 404, message: { message: 'User does not exist' } } };
     return user;
   },
+
+  destroy: async (email) => {
+    const deleteUser = await User.destroy({ where: { email } });
+
+    if (!deleteUser) return { error: { code: 404, message: { message: 'User does not exist' } } };
+    return deleteUser;
+  },
 };
 
 module.exports = usersService;
