@@ -116,4 +116,4 @@ Você pode verificar todas as rotas acessando o endpoint /docs em seu navegador 
     
 ---
  
-Desenvolvido por [ Gabriela Moura ](www.linkedin.com/in/gabriela-daniel-moura), © 2022.
+Desenvolvido por [ Gabriela Moura ](www.linkedin.com/in/gabriela-daniel-moura/), © 2022.
