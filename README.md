@@ -36,7 +36,7 @@ Navegue até a raiz do projeto
 
     cd blogs-api/
     
-<detalhes>
+<details>
    <summary><strong>Executando localmente</strong></summary>
   </br>
   <strong>Obs:</strong> Para rodar a aplicação desta forma você deve ter o [ Node ](https://nodejs.org/en/) instalado em sua máquina.
@@ -59,9 +59,9 @@ Navegue até a raiz do projeto
   
     npm depurar
   
-</detalhes>
+</details>
 
-<detalhes>
+<details>
    <summary><strong>Executando com o Docker</strong></summary>
   </br>
   
@@ -98,13 +98,13 @@ Navegue até a raiz do projeto
     
     npm executar depuração
     
-</detalhes>
+</details>
 
 ##  Rotas
 
 Você pode verificar todas as rotas acessando o endpoint /docs em seu navegador ao executar o aplicativo.
 
-<detalhes>
+<details>
     <summary>Visualização de rotas</summary>
     
 
@@ -112,7 +112,7 @@ Você pode verificar todas as rotas acessando o endpoint /docs em seu navegador 
 ![ Captura de tela de 2023-01-03 12-17-42 ](https://user-images.githubusercontent.com/98956659/210414520-2b59fb45-9162-4164-81c0-44f2369ea48f.png)
 
     
-</detalhes>
+</details>
     
 ---
  
